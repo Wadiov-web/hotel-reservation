@@ -1,0 +1,156 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    /* background-color: #a1a1a1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; */
+}
+#vorallem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+}
+
+#search{
+    text-decoration: none;
+    background-color: #1682fd;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#topDiv {
+    height: 130px;
+    background-color: #1682fd;
+    top: 0;
+    position: relative;
+    position: sticky;
+}
+#topDiv h1{
+    margin: 0;
+    font-size: 50px;
+    position: absolute;
+    color: #ffffff;
+    top: 25%;
+    left: 15%;
+}
+#logout button{
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: 35%;
+    right: 10%;
+    padding: 5px; 
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #1682fd;
+    cursor: pointer;
+}
+
+
+#tinbx{
+    color: #1682fd;
+}
+
+#box{
+    background-color: #d1d1d1;
+    width: 500px;
+    padding: 25px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+#box p{
+    font-size: 22px;
+}
+#stat1{
+    color: #1682fd;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+#stat2{
+    color: #ff0f5f;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+#box form button {
+    background-color: #ff0f5f;
+    color: white;
+    font-weight: bold;
+    padding: 0px 10px 2px 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 21px;
+    margin-left: 480px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#footer{
+    margin-top: 200px;
+    height: 350px; 
+    width: 100%; 
+    background-color: #1682fd;
+    position: relative;
+    text-align: center;
+}
+
+#if{
+    display: flex;
+    /* background-color: yellow; */
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+#if div{
+    margin: 60px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#if div p{
+    margin: 10px;
+}
+#if a{
+    text-decoration: none;
+    color: white;
+    margin-bottom: 20px;
+}
+
+#btm{
+    position: absolute;
+    bottom: 0;
+    /* right: 39%;
+    left: 39%; */
+    background-color: #1682fd;
+    width: 100%;
+    text-align: center;
+}
+#btm p{
+    font-size: 17px;
+    color: white;
+    padding: 5px;
+}

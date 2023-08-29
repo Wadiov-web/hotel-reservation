@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/hostInbox.css">
+    <title>Host Inbox</title>
+</head>
+<body>
+
+    <div id="topDiv">
+        <h1>Find Now</h1>
+        <div id="logout">
+            <form action="/host/logout" method="POST">
+                <button type="submit">LogOut</button>
+            </form>
+        </div>
+    </div>
+    <% let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Augst', 'September', 'October', 'November', 'December'] %>
+    <%function conv(date){%>
+        <%let d = date.split('-')%>
+        <%return d[2] + " " + months[Number(d[1]) - 1] + " " + d[0]%>
+    <%}%>
+
+    <div id="vorallem">
+        <h1 id="title">Host Inbox</h1>
+        <div id="links">
+            <a href="http://localhost:5000/host/profile">Home</a>
+            <a href="http://localhost:5000/host/inbox">Inbox</a>
+            <a href="http://localhost:5000">Search</a>
+        </div>
+
+        <div id="cont">
+            <div id="request">
+                <h2>Requests</h2>
+                <div>
+                    <%host.requests.reverse().forEach(r => {%>
+                        <div id="box">
+                            <div>
+                                <p>Booked By </p><p style="color: #1682fd;"><%= r.by %></p>
+                                <p>Room Category <%= r.catg %></p>
+                                <p>From <%= conv(r.from) %> To <%= conv(r.to) %></p>
+                                <p>Rooms <%= r.rooms %></p>
+                                <p>For  <%= r.days %> Days</p>
+                                <p>Total Price <%= r.totalPrice %>$</p>
+                            </div>
+                            <div id="buttons">
+                                <form action="/host/accept" method="POST">
+                                    <button id="acc" type="submit" name="user" value="<%= r.by %>">Accept</button>
+                                </form>
+                                <form action="/host/decline" method="POST">
+                                    <button id="dec" type="submit" name="user" value="<%= r.by %>">Decline</button>
+                                </form>
+                            </div>
+                        </div>
+                    <%})%>
+
+                </div>
+            </div>
+            <div>
+                <h2>Notifications</h2>
+                <div>
+                    <%host.notification.reverse().forEach(n => {%>
+                        <div id="nbox">
+                            <p><%= n.by %> Booking request From <%= conv(n.from) %> To <%= conv(n.to) %></p>
+                            <p>Category <%= n.catg %></p>
+                            <p><%= n.rooms %> rooms for <%= n.days %> Days</p>
+                            <p>Total price <%= n.totalPrice %> by <%= host.hostName %></p>
+                            <%if(n.status){%>
+                                <p>Was Accepted</p>
+                            <%} else {%>
+                                <p>Was Declined</p>
+                            <%}%>
+                        </div>
+                    <%})%>
+
+                    
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div id="footer">
+            <div id="if">
+                <div>
+                    <h2>Contact Us</h2>
+                    <p>Email us at :  findnow@gmail.com</p>
+                    <p>Facebook page at :  Find Now</p>
+                    <p>Instagram page at :  Find Now</p>
+                </div>
+                <div>
+                    <h2>Infos</h2><br>
+                    <a href="http://localhost:5000/aboutus">About Us</a><br><br>
+                    <a href="http://localhost:5000/">Search for a host Now</a><br>
+                </div>
+            </div>
+            <div id="btm">
+                <p>Designed and Developed by Alika Ouadie & Zine Hani</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

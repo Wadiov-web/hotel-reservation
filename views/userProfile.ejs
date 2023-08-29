@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/userProfile.css">
+    <title>User Profile</title>
+</head>
+<body>
+    <div id="topDiv">
+        <h1>Find Now</h1>
+        <div id="logout">
+            <form action="/user/logout" method="POST">
+                <button type="submit">LogOut</button>
+            </form>
+        </div>
+    </div>
+    <div id="vorallem">
+        <% let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Augst', 'September', 'October', 'November', 'December'] %>
+        <%function conv(date){%>
+            <%let d = date.split('-')%>
+            <%return d[2] + " " + months[Number(d[1]) - 1] + " " + d[0]%>
+        <%}%>
+        <br>
+        <div>
+            <a id="search" href="http://localhost:5000">Search</a>
+        </div>
+        <br>
+        <h1>Welcome to your profile <%= user.username %></h1>
+        <br>
+        <div>
+            <h1 id="tinbx">User Inbox</h1>
+            <div>
+                
+                <%user.inbox.reverse().forEach(i => {%>
+                    <%if(i.status){%>
+                        <div id="box">
+                            <div>
+                                <h2 id="stat1">Reservation Confirmed</h2>
+                                <p>By : <%= i.by %></p>
+                                <p>Recepient is <%= user.username %></p>
+                                <p>From <%= conv(i.from) %> To <%= conv(i.to) %></p>
+                                <p>Category : <%= i.catg %></p>
+                                <p>Days : <%= i.days %></p>
+                                <p>Rooms : <%= i.rooms %></p>
+                                <p>Total Price : <%= i.totalPrice %>$</p>
+                            </div>
+                            <form action="/user/delete" method="POST">
+                                <input type="hidden" name="inbox" value="<%= i.totalPrice %>">
+                                <button type="submit">x</button>
+                            </form>
+                        </div>
+                    <%} else {%>
+                        <div id="box">
+                            <div>
+                                <h2 id="stat2">Reservation Declined</h2>
+                                <p>By : <%= i.by %></p>
+                                <p>Recepient is <%= user.username %></p>
+                                <p>From <%= conv(i.from) %> To <%= conv(i.to) %></p>
+                                <p>Category : <%= i.catg %></p>
+                                <p>Days : <%= i.days %></p>
+                                <p>Rooms : <%= i.rooms %></p>
+                                <p>Total Price : <%= i.totalPrice %>$</p>
+                            </div>
+                            <form action="/user/delete" method="POST">
+                                <input type="hidden" name="inbox" value="<%= i.totalPrice %>">
+                                <button type="submit">x</button>
+                            </form>
+                        </div>
+                    <%}%>
+                <%})%>
+
+            </div>
+        </div>
+
+
+
+
+
+        <div id="footer">
+            <div id="if">
+                <div>
+                    <h2>Contact Us</h2>
+                    <p>Email us at :  findnow@gmail.com</p>
+                    <p>Facebook page at :  Find Now</p>
+                    <p>Instagram page at :  Find Now</p>
+                </div>
+                <div>
+                    <h2>Infos</h2><br>
+                    <a href="http://localhost:5000/aboutus">About Us</a><br><br>
+                    <a href="http://localhost:5000/">Search for a host Now</a><br>
+                </div>
+            </div>
+            <div id="btm">
+                <p>Designed and Developed by Alika Ouadie & Zine Hani</p>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

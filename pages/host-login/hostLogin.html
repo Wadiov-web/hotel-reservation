@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/hostLogin.css">
+    <title>Host Login</title>
+</head>
+<body>
+
+    <div id="topDiv">
+        <h1>Find Now</h1>
+    </div>
+
+    <div id="vorallem">
+        <h1>Login Host</h1>
+        <div id="fr">
+            <p id="err"></p>
+            <label>Email</label><br>
+            <input type="email" id="email"><br>
+            <label>Password</label><br>
+            <input type="password" id="pass"><br>
+            <button id="btn">Login Host</button>
+        </div>
+        
+        <p><a href="http://localhost:5000/host/register">Register</a> or <a href="http://localhost:5000/">Home</a></p>
+    
+    
+        <div id="footer">
+            <div id="if">
+                <div>
+                    <h2>Contact Us</h2>
+                    <p>Email us at :  findnow@gmail.com</p>
+                    <p>Facebook page at :  Find Now</p>
+                    <p>Instagram page at :  Find Now</p>
+                </div>
+                <div>
+                    <h2>Infos</h2><br>
+                    <a href="http://localhost:5000/aboutus">About Us</a><br><br>
+                    <a href="http://localhost:5000/">Search for a host Now</a><br>
+                </div>
+            </div>
+            <div id="btm">
+                <p>Designed and Developed by Alika Ouadie & Zine Hani</p>
+            </div>
+        </div>
+    
+    </div>
+    <script>
+
+
+
+
+        const err = document.querySelector('#err')
+        const email = document.querySelector('#email')
+        const pass = document.querySelector('#pass')
+        const btn = document.querySelector('#btn')
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault()
+            console.log({
+                   email: email.value, 
+                   password: pass.value
+                 })
+            fetch('http://localhost:5000/host/login', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    email: email.value, 
+                    password: pass.value
+                })
+            }).then(res => res.json())
+            .then(res => {
+                console.log('msg')
+                console.log(res)
+
+                if(res.msg == 'success'){
+                    window.location.href = 'http://localhost:5000/host/profile'
+                } else {
+                    console.log('msg')
+                    err.innerHTML = res.msg
+                }
+            }).catch(err => console.log(err))
+        })
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

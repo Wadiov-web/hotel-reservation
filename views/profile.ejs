@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/profile.css">
+    <title>Host Profile</title>
+</head>
+<body>
+    <div id="topDiv">
+        <h1>Find Now</h1>
+        <div id="logout">
+            <form action="/host/logout" method="POST">
+                <button type="submit">LogOut</button>
+            </form>
+        </div>
+    </div>
+    <% let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Augst', 'September', 'October', 'November', 'December'] %>
+    <%function conv(date){%>
+        <%let d = date.split('-')%>
+        <%return d[2] + " " + months[Number(d[1]) - 1] + " " + d[0]%>
+    <%}%>
+    <div id="vorallem">
+        <h1 id="title">Host Profile</h1>
+        <div id="links">
+            <a href="http://localhost:5000/host/profile">Home</a>
+            <a href="http://localhost:5000/host/inbox">Inbox</a>
+            <a href="http://localhost:5000">Search</a>
+        </div>
+        <h1 id="name"><%= host.hostName %></h1>
+        <div>
+            <div id="addcat">
+            
+                <h1>Add host room categories</h1><br>
+                <form action="/host/addinfo" method="POST">
+                    <label>Category name :</label>
+                    <input type="text" name="category"><br>
+                    <label>Number of rooms :</label>
+                    <input type="number" name="room"><br>
+                    <label>Available from :</label>
+                    <input type="date" name="from"><br>
+                    <label>Price for a night $ :</label>
+                    <input type="text" name="price"><br>
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+            <br>
+
+            <div id="addpic">
+                <h1>Add host pictures</h1>
+                <form action="/host/addimage" method="POST" enctype="multipart/form-data">
+                    <label>Host images</label>
+                    <input type="file" name="image">
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+
+            
+            
+            <div id="showcat">
+                <h1>My categories</h1>
+                <div>
+                    <%if(host.infos.length > 0){%>
+                        <%host.infos.forEach(c => {%>
+                            <div id="cat">
+                                <form action="/host/delCat" method="POST">
+                                    <input type="hidden" name="catg" value="<%= c.cat %>">
+                                    <button id="del" type="submit">x</button>
+                                </form><br>
+                                <h3><%= c.cat %></h3><br>
+                                <form action="/host/editCat" method="POST">
+                                    <input type="hidden" name="catg" value="<%= c.cat %>"><br>
+                                    <label>rooms</label>
+                                    <input type="number" name="room" value="<%= c.room %>"><br>
+                                    <label>Available from <%= conv(c.from) %></label>
+                                    <input type="date" name="from"><br>
+                                    <label>Price $</label>
+                                    <input type="text" name="price" value="<%= c.price %>"><br>
+                                    <button id="edit" type="submit">Edit</button>
+                                </form>
+                            </div>
+                        <%})%>
+                </div>
+                    <%} else {%>
+                        <p>No rooms categories were created yet</p>
+                    <%}%>
+            </div>
+
+
+            <div id="addinfo">
+                <h1>Add host infos</h1><br>
+                <form action="/host/infos" method="POST">
+                    <label>Host Name</label>
+                    <input type="text" name="hostName" value="<%= host.hostName %>" ><br>
+                    <label>Address</label>
+                    <input type="text" name="address" value="<%= host.address %>"><br>
+                    <label>Website</label>
+                    <input type="text" name="website" value="<%= host.website %>"><br>
+                    <label>Stars</label>
+                    <input type="number" name="stars" value="<%= host.stars %>"><br>
+                    <button type="submit">submit</button>
+                </form>
+            </div>
+        </div>
+        
+
+
+        <div id="footer">
+            <div id="if">
+                <div>
+                    <h2>Contact Us</h2>
+                    <p>Email us at :  findnow@gmail.com</p>
+                    <p>Facebook page at :  Find Now</p>
+                    <p>Instagram page at :  Find Now</p>
+                </div>
+                <div>
+                    <h2>Infos</h2><br>
+                    <a href="http://localhost:5000/aboutus">About Us</a><br><br>
+                    <a href="http://localhost:5000/">Search for a host Now</a><br>
+                </div>
+            </div>
+            <div id="btm">
+                <p>Designed and Developed by Alika Ouadie & Zine Hani</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

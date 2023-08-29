@@ -1,0 +1,20 @@
+{
+  "name": "hotel-reservation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.17.3",
+    "express-session": "^1.17.3",
+    "mongoose": "^6.0.11",
+    "multer": "*",
+    "nodemon": "^2.0.22"
+  }
+}

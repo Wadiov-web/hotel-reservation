@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/booking.css">
+    <title>Booking</title>
+</head>
+<body>
+    <div id="topDiv">
+        <h1>Find Now</h1>
+        <a href="http://localhost:5000/user/profile">Profile</a>
+    </div>
+    <br>
+    <div id="overall">
+        <div>
+            <a id="search" href="http://localhost:5000">Search again</a>
+        </div>
+        <div id="container">
+            
+            <div id="formCont">
+                <h1>Choose the suitable room for your getaway</h1>
+                <%if(host.infos.length > 0){%>
+                    <div id="forms">
+                        <%host.infos.forEach(c => {%>
+                            <%if(c.room > 0){%>
+                                <form id="fr" action="/book-now" method="POST">
+                                    <input type="hidden" name="hostName" value="<%= host.hostName %>">
+                                    <input type="hidden" name="cat" value="<%= c.cat %>"></label><br>
+                                    <h2><%= c.cat %></h2>
+                                    <p id="price"><%= c.price %>$ One Night</p> 
+
+                                    <label id="date">Dates Available From:
+                                        <% let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Augst', 'September', 'October', 'November', 'December'] %>
+                                        <%function conv(date){%>
+                                            <%let d = date.split('-')%>
+                                            <%return d[2] + " " + months[Number(d[1]) - 1] + " " + d[0]%>
+                                        <%}%>
+                                         <%= conv(c.from) %>
+                                        </label><br>
+                                    
+                                    <label>Start</label>
+                                    <input type="date" name="from" id="from" min="<%= c.from %>"><br>
+                                    <label>End</label>
+                                    <input type="date" name="to" id="to" min="<%= c.from %>">
+                                    <br>
+
+                                    <label id="dayl">Days :</label>
+                                    <input type="text" name="days" id="day" value="0"><br>
+
+                                    <div id="roomdiv">
+                                        <label>Rooms :</label>
+                                        <input type="number" name="rooms" value="1" id="rooms" min="0" max="<%= c.room %>">
+                                    </div><br>
+                                
+                                    <label id="tpricel">Total Price $:</label>
+                                    <input type="text" name="totalPrice" id="tPrice" value="0"><br>
+
+                                    <button type="submit">Book Now</button>
+                                </form>
+                                
+                            <%}else {%>
+                                <div id="fr">
+                                    <h2><%= c.cat %></h2>
+                                    <p id="price"><%= c.price %>$ One Night</p> 
+                                    <h3><%= c.cat %> are busy for the moment</h3>
+                                    <h3>Please try later</h3>
+                                    <h3>Thank you for your patience</h3>
+                                </div>
+                            <%}%>
+                        <%})%>
+                    </div>
+                <%} else {%>
+                    <div>
+                        <h1>Sorry, Host is not available now</h1>
+                    </div>
+                <%}%>
+            </div>
+
+            <div id="infosCont">
+                <div id="infos">
+                    <h1><%= host.hostName %></h1>
+                    <h2><%= host.hostCity %>, <%= host.country %></h2>
+                    <h3>Address: <%= host.address %></h3>
+                    <h3>Website: <a href="#"><%= host.website %></a></h3>
+                    <h3>Stars: <%= host.stars %></h3>
+                </div>
+
+                <div id="wrap">
+                    <%host.images.forEach(i => {%>
+                        <img src="http://localhost:5000/<%= i %>" >
+                    <%})%>
+                </div>
+            </div>
+        
+
+        </div>
+
+
+        <div id="footer">
+            <div id="if">
+                <div>
+                    <h2>Contact Us</h2>
+                    <p>Email us at :  findnow@gmail.com</p>
+                    <p>Facebook page at :  Find Now</p>
+                    <p>Instagram page at :  Find Now</p>
+                </div>
+                <div>
+                    <h2>Infos</h2><br>
+                    <a href="http://localhost:5000/aboutus">About Us</a><br><br>
+                    <a href="http://localhost:5000/">Search for a host Now</a><br>
+                </div>
+            </div>
+            <div id="btm">
+                <p>Designed and Developed by Alika Ouadie & Zine Hani</p>
+            </div>
+        </div>
+
+
+
+    </div>
+    <script>
+        
+
+        const forms = document.querySelectorAll('form')
+        forms.forEach(form => {
+            const price = form.querySelector('#price')
+            const day = form.querySelector('#day')
+
+            const from = form.querySelector('#from')
+            const to = form.querySelector('#to')
+            to.addEventListener('input', (e) => {
+                e.preventDefault()
+                console.log('me')
+                
+                const from = form.querySelector('#from').value
+                const to = form.querySelector('#to').value
+                
+                const dateOne = new Date(from)
+                const dateTwo = new Date(to)
+                const time = Math.abs(dateTwo - dateOne)
+                const days = Math.ceil(time / (1000 * 60 * 60 * 24))
+                console.log(days)
+                day.value = days
+                total()
+            })  
+            const tPrice = form.querySelector('#tPrice')
+            const rooms = form.querySelector('#rooms')
+
+            rooms.addEventListener('click', total)
+            function total(){
+                console.log(rooms.value)
+                tPrice.value = parseInt(rooms.value) * parseInt(price.innerHTML) * parseInt(day.value)
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/search.css">
+    <link rel="stylesheet" href="/results.css">
+    <title>Results</title>
+</head>
+<body>
+    <div id="topDiv">
+        <h1>Find Now</h1>
+        <a href="http://localhost:5000/registration">Login</a>
+    </div>
+
+    <div id="container">
+        <h1 id="title">Your results</h1>
+        <a id="sb" href="http://localhost:5000/">search again</a>
+
+        <div id="wrap">
+            <% if(hosts.length > 0){%>
+                <%hosts.forEach(host => {%>
+                    <div id="host">
+                        <a href="http://localhost:5000/book/<%= host.hostName %>" style="text-decoration: none;">
+                            <img src="http://localhost:5000/<%= host.images[0] %>" alt="">
+                            <p id="city"><%= host.hostCity %>, <%= host.country %></p>
+                            <p id="name"><%= host.hostName%></p>
+                            <p id="stars"><%= host.stars%> Stars Hotel</p>
+                        </a>
+                    </div>
+                <%})%>
+            <%} else {%>
+                <h1>No Results</h1>
+            <%}%>
+        </div>
+
+
+        <div id="footer">
+            <div id="if">
+                <div>
+                    <h2>Contact Us</h2>
+                    <p>Email us at :  findnow@gmail.com</p>
+                    <p>Facebook page at :  Find Now</p>
+                    <p>Instagram page at :  Find Now</p>
+                </div>
+                <div>
+                    <h2>Infos</h2><br>
+                    <a href="http://localhost:5000/aboutus">About Us</a><br><br>
+                    <a href="http://localhost:5000/">Search for a host Now</a><br>
+                </div>
+            </div>
+            <div id="btm">
+                <p>Designed and Developed by Alika Ouadie & Zine Hani</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

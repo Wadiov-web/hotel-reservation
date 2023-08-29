@@ -1,0 +1,97 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#topDiv {
+    height: 130px;
+    background-color: #1682fd;
+    
+    top: 0;
+    /* position: relative; */
+    position: sticky;
+
+}
+#topDiv h1{
+    margin: 0;
+    font-size: 50px;
+    position: absolute;
+    color: #ffffff;
+    top: 25%;
+    left: 15%;
+}
+#vorallem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 200px;
+
+}
+
+
+#opt a{
+    text-decoration: none;
+    margin: 50px;
+    background-color: #1682fd;
+    padding: 40px;
+    color: white;
+    border-radius: 5px;
+}
+#opt a:hover{
+    background-color: #005fcc;
+    
+}
+
+#opt{
+    display: flex;
+}
+
+
+
+
+#footer{
+    margin-top: 200px;
+    height: 350px; 
+    width: 100%; 
+    background-color: #1682fd;
+    position: relative;
+    text-align: center;
+}
+
+#if{
+    display: flex;
+    /* background-color: yellow; */
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+#if div{
+    margin: 60px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#if div p{
+    margin: 10px;
+}
+#if a{
+    text-decoration: none;
+    color: white;
+    margin-bottom: 20px;
+}
+
+#btm{
+    position: absolute;
+    bottom: 0;
+    /* right: 39%;
+    left: 39%; */
+    background-color: #1682fd;
+    width: 100%;
+    text-align: center;
+}
+#btm p{
+    font-size: 17px;
+    color: white;
+    padding: 5px;
+}

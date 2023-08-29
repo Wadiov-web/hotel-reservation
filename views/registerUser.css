@@ -1,0 +1,114 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#topDiv {
+    height: 130px;
+    background-color: #1682fd;
+    
+    top: 0;
+    /* position: relative; */
+    position: sticky;
+
+}
+#topDiv h1{
+    margin: 0;
+    font-size: 50px;
+    position: absolute;
+    color: #ffffff;
+    top: 25%;
+    left: 15%;
+}
+#vorallem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 200px;
+}
+
+#fr{
+    margin-top: 20px;
+   font-size: 22px; 
+   text-align: center;
+}
+#fr input{
+    font-size: 22px; 
+    border: none;
+    padding: 6px;
+    border-radius: 5px;
+    outline-color: #1682fd;
+    background-color: #dadada;
+    margin-bottom: 5px;
+}
+
+#fr button{
+    font-size: 22px; 
+    border: none;
+    padding: 6px;
+    border-radius: 5px;
+    width: 300px;
+    background-color: #1682fd;
+    color: white;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+#fr button:hover{
+    background-color: #0077ff;
+}
+
+
+
+
+
+
+
+
+
+#footer{
+    margin-top: 200px;
+    height: 350px; 
+    width: 100%; 
+    background-color: #1682fd;
+    position: relative;
+    text-align: center;
+}
+
+#if{
+    display: flex;
+    /* background-color: yellow; */
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+#if div{
+    margin: 60px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#if div p{
+    margin: 10px;
+}
+#if a{
+    text-decoration: none;
+    color: white;
+    margin-bottom: 20px;
+}
+
+#btm{
+    position: absolute;
+    bottom: 0;
+    /* right: 39%;
+    left: 39%; */
+    background-color: #1682fd;
+    width: 100%;
+    text-align: center;
+}
+#btm p{
+    font-size: 17px;
+    color: white;
+    padding: 5px;
+}
